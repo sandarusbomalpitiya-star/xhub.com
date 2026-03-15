@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BGX HUB | Admin Login</title>
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar" style="justify-content: center;">
+        <a href="index.html" class="logo">BGX HUB <span style="font-size: 1rem; color: #fff; text-shadow: none;">Admin</span></a>
+    </nav>
+    <div class="spacer"></div>
+
+    <div class="container">
+        <div class="login-box admin-container">
+            <h2>Welcome Back, Admin</h2>
+            <div id="loginAlert" class="alert error">Invalid credentials</div>
+            
+            <form id="loginForm">
+                <div class="form-group" style="text-align: left;">
+                    <label for="adminEmail">Email</label>
+                    <input type="email" id="adminEmail" class="form-control" required placeholder="admin@bgxhub.com">
+                </div>
+                <div class="form-group" style="text-align: left;">
+                    <label for="adminPassword">Password</label>
+                    <input type="password" id="adminPassword" class="form-control" required placeholder="••••••••">
+                </div>
+                
+                <button type="submit" class="btn" style="width: 100%; justify-content: center; margin-top: 1rem;" id="loginBtn">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+            </form>
+            <div style="margin-top: 1.5rem;">
+                <a href="index.html" style="color: var(--text-muted); font-size: 0.9rem;">Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Auth Script -->
+    <script type="module">
+        import { auth } from './firebase-config.js';
+        import { signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+
+        // Check if already logged in
+        onAuthStateChanged(auth, (user) => {
+            if (user) {
+                window.location.href = 'admin.html';
+            }
+        });
+
+        const loginForm = document.getElementById('loginForm');
+        const loginBtn = document.getElementById('loginBtn');
+        const alertBox = document.getElementById('loginAlert');
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('adminEmail').value;
+            const password = document.getElementById('adminPassword').value;
+            
+            // Disable button
+            loginBtn.innerHTML = '<div class="loader" style="width:16px; height:16px; border-width: 2px;"></div>';
+            loginBtn.disabled = true;
+            alertBox.style.display = 'none';
+
+            try {
+                await signInWithEmailAndPassword(auth, email, password);
+                // Redirect on success
+                window.location.href = 'admin.html';
+            } catch (error) {
+                // Show error
+                console.error(error);
+                alertBox.style.display = 'block';
+                alertBox.textContent = error.message;
+                
+                // Re-enable button
+                loginBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Login';
+                loginBtn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
