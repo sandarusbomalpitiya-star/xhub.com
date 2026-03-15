@@ -3,7 +3,7 @@ import { getAuth } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-aut
 import { getFirestore } from "https://www.gstatic.com/firebasejs/12.10.0/firebase-firestore.js";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDcKP6qgb8EbLh-dDbR43g3KZmNFCv5xzg",
+  apiKey: "Uvey5eC34kWTB8ZMkiB46ZNh8a12",
   authDomain: "bpgxhub.firebaseapp.com",
   projectId: "bpgxhub",
   storageBucket: "bpgxhub.appspot.com",
