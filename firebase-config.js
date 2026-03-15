@@ -1,13 +1,13 @@
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-app.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-firestore.js";
-import { getAuth } from "https://www.gstatic.com/firebasejs/10.9.0/firebase-auth.js";
+import { initializeApp } from "firebase/app";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-// TODO: Replace the following with your app's Firebase project configuration
-// See: https://firebase.google.com/docs/web/learn-more#config-object
+// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDcKP6qgb8EbLh-dDbR43g3KZmNFCv5xzg",
   authDomain: "bpgxhub.firebaseapp.com",
+  databaseURL: "https://bpgxhub-default-rtdb.firebaseio.com",
   projectId: "bpgxhub",
   storageBucket: "bpgxhub.firebasestorage.app",
   messagingSenderId: "781508153938",
@@ -16,7 +16,3 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
-const auth = getAuth(app);
-
-export { db, auth };
