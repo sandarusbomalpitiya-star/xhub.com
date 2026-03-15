@@ -7,7 +7,7 @@ const firebaseConfig = {
   authDomain: "bpgxhub.firebaseapp.com",
   databaseURL: "https://bpgxhub-default-rtdb.firebaseio.com",
   projectId: "bpgxhub",
-  storageBucket: "bpgxhub.appspot.com",
+  storageBucket: "bpgxhub.firebasestorage.app",
   messagingSenderId: "781508153938",
   appId: "1:781508153938:web:aa716282bab0090e7cc58b"
 };
