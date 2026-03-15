@@ -5,6 +5,7 @@ import { getFirestore } from "https://www.gstatic.com/firebasejs/12.10.0/firebas
 const firebaseConfig = {
   apiKey: "Uvey5eC34kWTB8ZMkiB46ZNh8a12",
   authDomain: "bpgxhub.firebaseapp.com",
+  databaseURL: "https://bpgxhub-default-rtdb.firebaseio.com",
   projectId: "bpgxhub",
   storageBucket: "bpgxhub.appspot.com",
   messagingSenderId: "781508153938",
